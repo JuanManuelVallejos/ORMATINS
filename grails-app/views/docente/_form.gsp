@@ -1,67 +1,42 @@
 <%@ page import="ormatins.Docente" %>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'antiguedad', 'error')} required">
-	<label for="antiguedad">
-		<g:message code="docente.antiguedad.label" default="Antiguedad" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="antiguedad" type="number" value="${docenteInstance.antiguedad}" required=""/>
-
+<g:hiddenField name="id" value="${docenteInstance?.id}"></g:hiddenField>
+<g:hiddenField name="version" value="${docenteInstance?.version}"/>
+<div class="row">
+	<div class="col-md-5" align="center">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h2 class="panel-title">Información personal</h2>
+			</div>
+			<div class="panel-body" align="center">
+				<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'nombre', 'error')} required">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Nombre</span>
+						<g:textField name="nombre" class="form-control" disabled="${!modoEdicion}" placeholder="Nombre" aria-describedby="basic-addon1" required="" value="${docenteInstance?.nombre}"/>
+					</div>
+				</div>
+				<br/>
+				<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'apellido', 'error')} required">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Apellido</span>
+						<g:textField name="apellido" class="form-control" disabled="${!modoEdicion}" placeholder="Apellido" aria-describedby="basic-addon1" required="" value="${docenteInstance?.apellido}"/>
+					</div>
+				</div>
+				<br/>
+				<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'email', 'error')} required">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Email</span>
+						<g:textField name="email" class="form-control" disabled="${!modoEdicion}" placeholder="ejemplo@gmail.com" aria-describedby="basic-addon1" required="" value="${docenteInstance?.email}"/>
+					</div>
+				</div>
+				<br/>
+				<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'telefono', 'error')} required">
+					<div class="input-group">
+						<span class="input-group-addon" style="size: " id="basic-addon1">Teléfono</span>
+						<g:textField name="telefono" class="form-control" disabled="${!modoEdicion}" placeholder="Telefono" aria-describedby="basic-addon1" required="" value="${docenteInstance?.telefono}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'apellido', 'error')} required">
-	<label for="apellido">
-		<g:message code="docente.apellido.label" default="Apellido" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="apellido" required="" value="${docenteInstance?.apellido}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'email', 'error')} required">
-	<label for="email">
-		<g:message code="docente.email.label" default="Email" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="email" required="" value="${docenteInstance?.email}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'nombre', 'error')} required">
-	<label for="nombre">
-		<g:message code="docente.nombre.label" default="Nombre" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="nombre" required="" value="${docenteInstance?.nombre}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'puntaje', 'error')} required">
-	<label for="puntaje">
-		<g:message code="docente.puntaje.label" default="Puntaje" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="puntaje" type="number" value="${docenteInstance.puntaje}" required=""/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'telefono', 'error')} required">
-	<label for="telefono">
-		<g:message code="docente.telefono.label" default="Telefono" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="telefono" required="" value="${docenteInstance?.telefono}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'tituloBase', 'error')} required">
-	<label for="tituloBase">
-		<g:message code="docente.tituloBase.label" default="Titulo Base" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="tituloBase" name="tituloBase.id" from="${ormatins.Titulo.list()}" optionKey="id" required="" value="${docenteInstance?.tituloBase?.id}" class="many-to-one"/>
-
-</div>
-

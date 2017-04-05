@@ -5,7 +5,6 @@ package ormatins
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
 class DocenteController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -20,10 +19,11 @@ class DocenteController {
     }
 
     def create() {
-        respond new Docente(params)
+        Docente docente = new Docente()
+        [docenteInstance: docente]
+        //render ([view: 'create', model:[docenteInstance: docente]])
     }
 
-    @Transactional
     def save(Docente docenteInstance) {
         if (docenteInstance == null) {
             notFound()
@@ -50,7 +50,6 @@ class DocenteController {
         respond docenteInstance
     }
 
-    @Transactional
     def update(Docente docenteInstance) {
         if (docenteInstance == null) {
             notFound()
@@ -73,7 +72,6 @@ class DocenteController {
         }
     }
 
-    @Transactional
     def delete(Docente docenteInstance) {
 
         if (docenteInstance == null) {
