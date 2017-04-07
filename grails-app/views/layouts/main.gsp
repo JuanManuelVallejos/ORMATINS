@@ -20,7 +20,8 @@
 			<nav class="navbar navbar-inverse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Ormatins <span class="sr-only">(current)</span></a></li>
-					<li><a href="/docente/create">Registrar docente</a></li>
+					<li><g:link controller="docente" action="create">Registrar docente</g:link></li>
+					<li><g:link controller="docente" action="index">Docentes registrados</g:link></li>
 				</ul>
 			</nav>
 			<div class="jumbotron" style="opacity: 0.7">

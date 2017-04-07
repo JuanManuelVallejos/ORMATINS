@@ -64,6 +64,7 @@ grails.project.dependency.resolution = {
         compile ":scaffolding:2.0.3"
         compile ':cache:1.1.7'
         compile "org.grails.plugins:twitter-bootstrap:3.3.4"
+        compile "org.grails.plugins:file-uploader:1.2.1"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.16" // or ":hibernate4:4.3.5.4"

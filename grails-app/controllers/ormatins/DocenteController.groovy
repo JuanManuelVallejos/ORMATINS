@@ -1,21 +1,44 @@
 package ormatins
 
-
+import filter.DocenteFilter
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import com.lucastex.grails.fileuploader.UFile
 
 class DocenteController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Docente.list(params), model:[docenteInstanceCount: Docente.count()]
+    def docenteService
+
+    def index(DocenteFilter filter) {
+        if(!filter)
+            filter = new DocenteFilter()
+        else
+            filter.validate()
+
+        def docentes = docenteService.search(filter)
+        def total = docenteService.count(filter)
+        //render(view: "index", model: [docenteList: docentes, docenteCount: total])
+        [docenteList: docentes, docenteCount: total]
     }
 
-    def show(Docente docenteInstance) {
-        respond docenteInstance
+    def success(int i){
+
+    }
+
+    def error(int i){
+
+    }
+
+    def show() {
+        List<Docente> listaDocentes = Docente.getAll()
+        [docentes: listaDocentes]
+    }
+
+    def downloadFile() {
+        render file: new File ("/ORMATINS/web-app/images"), fileName: 'fondoEscolar.jpg'
     }
 
     def create() {
@@ -46,8 +69,9 @@ class DocenteController {
         }
     }
 
-    def edit(Docente docenteInstance) {
-        respond docenteInstance
+    def edit() {
+        List<Docente> listaDocentes = Docente.getAll()
+        [docentes: listaDocentes]
     }
 
     def update(Docente docenteInstance) {
